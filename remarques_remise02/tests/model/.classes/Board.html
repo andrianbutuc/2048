@@ -1,0 +1,456 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Board</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">model</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Board (model)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Board</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (18/ 18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    91.2%
+  </span>
+  <span class="absValue">
+    (134/ 147)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Board$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (19/ 19)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    91.2%
+  </span>
+  <span class="absValue">
+    (135/ 148)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package model;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.Collections;
+<i>4</i>&nbsp;import java.util.LinkedList;
+<i>5</i>&nbsp;import java.util.List;
+<i>6</i>&nbsp;import java.util.Random;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;/**
+<i>9</i>&nbsp; * This class represent the board of the game 2048 .
+<i>10</i>&nbsp; */
+<i>11</i>&nbsp;class Board {
+<i>12</i>&nbsp;    private final static int HEIGHT = 4;
+<i>13</i>&nbsp;    private final static int WINNING_CASE_VALUE = 2048;
+<i>14</i>&nbsp;    private final Case[][] gameTable;
+<i>15</i>&nbsp;    private final Case[][] history;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    /**
+<i>18</i>&nbsp;     * Constructs a board with a non-empty case .
+<i>19</i>&nbsp;     */
+<b class="fc"><i>20</i>&nbsp;    Board() {</b>
+<b class="fc"><i>21</i>&nbsp;        this.gameTable = new Case[HEIGHT][HEIGHT];</b>
+<b class="fc"><i>22</i>&nbsp;        this.history = new Case[HEIGHT][HEIGHT];</b>
+<b class="fc"><i>23</i>&nbsp;        this.initializeBoard();</b>
+<b class="fc"><i>24</i>&nbsp;    }</b>
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    /**
+<i>27</i>&nbsp;     * Constructs a board with given game table and his history .
+<i>28</i>&nbsp;     *
+<i>29</i>&nbsp;     * @param newBoard a 2D array of cases .
+<i>30</i>&nbsp;     * @param history  a 2D array of cases .
+<i>31</i>&nbsp;     */
+<b class="fc"><i>32</i>&nbsp;    Board(Case[][] newBoard, Case[][] history) {</b>
+<b class="fc"><i>33</i>&nbsp;        if(newBoard == null || history == null){</b>
+<b class="nc"><i>34</i>&nbsp;            throw new IllegalArgumentException(&quot;New board or history is null &quot;);</b>
+<i>35</i>&nbsp;        }
+<b class="fc"><i>36</i>&nbsp;        this.gameTable = newBoard;</b>
+<b class="fc"><i>37</i>&nbsp;        this.history = history;</b>
+<b class="fc"><i>38</i>&nbsp;    }</b>
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    /**
+<i>41</i>&nbsp;     * Constructs a copy of board .
+<i>42</i>&nbsp;     *
+<i>43</i>&nbsp;     * @param boardToCopy a board .
+<i>44</i>&nbsp;     */
+<b class="fc"><i>45</i>&nbsp;    Board(Board boardToCopy) {</b>
+<b class="fc"><i>46</i>&nbsp;        if (boardToCopy == null) {</b>
+<b class="fc"><i>47</i>&nbsp;            throw new IllegalArgumentException(&quot;Board is null&quot;);</b>
+<i>48</i>&nbsp;        }
+<b class="fc"><i>49</i>&nbsp;        this.gameTable = new Case[HEIGHT][HEIGHT];</b>
+<b class="fc"><i>50</i>&nbsp;        this.history = new Case[HEIGHT][HEIGHT];</b>
+<b class="fc"><i>51</i>&nbsp;        for (int line = 0; line &lt; HEIGHT; line++) {</b>
+<b class="fc"><i>52</i>&nbsp;            for (int column = 0; column &lt; HEIGHT; column++) {</b>
+<b class="fc"><i>53</i>&nbsp;                this.gameTable[line][column] = new Case(line, column);</b>
+<b class="fc"><i>54</i>&nbsp;                this.gameTable[line][column].setValue(boardToCopy.gameTable[line][column].getValue());</b>
+<b class="fc"><i>55</i>&nbsp;                this.history[line][column] = new Case(line, column);</b>
+<b class="fc"><i>56</i>&nbsp;                this.history[line][column].setValue(boardToCopy.history[line][column].getValue());</b>
+<i>57</i>&nbsp;            }
+<i>58</i>&nbsp;        }
+<b class="fc"><i>59</i>&nbsp;    }</b>
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;    /**
+<i>62</i>&nbsp;     * Moves the cases in the indicated direction .
+<i>63</i>&nbsp;     * @param direction a direction .
+<i>64</i>&nbsp;     * @return the score of move .
+<i>65</i>&nbsp;     */
+<i>66</i>&nbsp;    int move(Direction direction) {
+<b class="fc"><i>67</i>&nbsp;        if(direction == null){</b>
+<b class="fc"><i>68</i>&nbsp;            throw new IllegalArgumentException(&quot;Unknown direction&quot;);</b>
+<i>69</i>&nbsp;        }
+<b class="fc"><i>70</i>&nbsp;        int scoreOfMove = 0;</b>
+<b class="fc"><i>71</i>&nbsp;        List&lt;Case&gt; caseToMerge = new LinkedList&lt;&gt;();</b>
+<b class="fc"><i>72</i>&nbsp;        this.saveHistory(gameTable);</b>
+<b class="fc"><i>73</i>&nbsp;        int line = 0;</b>
+<b class="fc"><i>74</i>&nbsp;        while (line &lt; HEIGHT) {</b>
+<b class="fc"><i>75</i>&nbsp;            initList(direction, caseToMerge, line);</b>
+<b class="fc"><i>76</i>&nbsp;            scoreOfMove = scoreOfMove + merge(caseToMerge);</b>
+<b class="fc"><i>77</i>&nbsp;            line++;</b>
+<b class="fc"><i>78</i>&nbsp;            caseToMerge.clear();</b>
+<i>79</i>&nbsp;        }
+<b class="fc"><i>80</i>&nbsp;        return scoreOfMove;</b>
+<i>81</i>&nbsp;    }
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;    /**
+<i>84</i>&nbsp;     * Updates the history of board with the given history .
+<i>85</i>&nbsp;     *
+<i>86</i>&nbsp;     * @param newHistory a 2D array of cases .
+<i>87</i>&nbsp;     */
+<i>88</i>&nbsp;    private void saveHistory(Case[][] newHistory) {
+<b class="fc"><i>89</i>&nbsp;        if(newHistory == null){</b>
+<b class="nc"><i>90</i>&nbsp;            throw new IllegalArgumentException(&quot;New history is null &quot;);</b>
+<i>91</i>&nbsp;        }
+<b class="fc"><i>92</i>&nbsp;        for (int line = 0; line &lt; HEIGHT; line++) {</b>
+<b class="fc"><i>93</i>&nbsp;            for (int column = 0; column &lt; HEIGHT; column++) {</b>
+<b class="fc"><i>94</i>&nbsp;                this.history[line][column].setValue(newHistory[line][column].getValue());</b>
+<i>95</i>&nbsp;            }
+<i>96</i>&nbsp;        }
+<b class="fc"><i>97</i>&nbsp;    }</b>
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;    /**
+<i>100</i>&nbsp;     * Initializes a list of case to merge .
+<i>101</i>&nbsp;     *
+<i>102</i>&nbsp;     * @param direction   a direction .
+<i>103</i>&nbsp;     * @param caseToMerge a case list .
+<i>104</i>&nbsp;     * @param line        an integer .
+<i>105</i>&nbsp;     */
+<i>106</i>&nbsp;    private void initList(Direction direction, List&lt;Case&gt; caseToMerge, int line) {
+<b class="fc"><i>107</i>&nbsp;        if(caseToMerge == null){</b>
+<b class="nc"><i>108</i>&nbsp;            throw new IllegalArgumentException(&quot;The list of case to merge is null &quot;);</b>
+<i>109</i>&nbsp;        }
+<b class="fc"><i>110</i>&nbsp;        switch (direction) {</b>
+<i>111</i>&nbsp;            case TOP:
+<b class="fc"><i>112</i>&nbsp;                initListMoveDown(caseToMerge, line);</b>
+<b class="fc"><i>113</i>&nbsp;                Collections.reverse(caseToMerge);</b>
+<b class="fc"><i>114</i>&nbsp;                break;</b>
+<i>115</i>&nbsp;            case DOWN:
+<b class="fc"><i>116</i>&nbsp;                initListMoveDown(caseToMerge, line);</b>
+<b class="fc"><i>117</i>&nbsp;                break;</b>
+<i>118</i>&nbsp;            case LEFT:
+<b class="fc"><i>119</i>&nbsp;                initListMoveRight(caseToMerge, line);</b>
+<b class="fc"><i>120</i>&nbsp;                Collections.reverse(caseToMerge);</b>
+<b class="fc"><i>121</i>&nbsp;                break;</b>
+<i>122</i>&nbsp;            case RIGHT:
+<b class="fc"><i>123</i>&nbsp;                initListMoveRight(caseToMerge, line);</b>
+<i>124</i>&nbsp;                break;
+<i>125</i>&nbsp;        }
+<b class="fc"><i>126</i>&nbsp;    }</b>
+<i>127</i>&nbsp;
+<i>128</i>&nbsp;    /**
+<i>129</i>&nbsp;     * Searches the cases to merge ,merges them and update the game table .
+<i>130</i>&nbsp;     *
+<i>131</i>&nbsp;     * @param casesToMerge a case list .
+<i>132</i>&nbsp;     * @return the score of move .
+<i>133</i>&nbsp;     */
+<i>134</i>&nbsp;    private int merge(List&lt;Case&gt; casesToMerge) {
+<b class="fc"><i>135</i>&nbsp;        if(casesToMerge == null){</b>
+<b class="nc"><i>136</i>&nbsp;            throw new IllegalArgumentException(&quot;The list of case to merge is null &quot;);</b>
+<i>137</i>&nbsp;        }
+<b class="fc"><i>138</i>&nbsp;        LinkedList&lt;Case&gt; nonEmptyCases = new LinkedList&lt;&gt;();</b>
+<b class="fc"><i>139</i>&nbsp;        initListNonEmptyCase(casesToMerge, nonEmptyCases);</b>
+<b class="fc"><i>140</i>&nbsp;        int[] updatedValues = new int[HEIGHT];</b>
+<b class="fc"><i>141</i>&nbsp;        int scoreOfMerge = mergeListCase(updatedValues, nonEmptyCases);</b>
+<b class="fc"><i>142</i>&nbsp;        updateList(updatedValues, casesToMerge);</b>
+<b class="fc"><i>143</i>&nbsp;        return scoreOfMerge;</b>
+<i>144</i>&nbsp;    }
+<i>145</i>&nbsp;
+<i>146</i>&nbsp;    /**
+<i>147</i>&nbsp;     * Merges the case that can be merged and calculates the score of merged cases . Also initialises an array with
+<i>148</i>&nbsp;     * the updated values to modify in game table .
+<i>149</i>&nbsp;     *
+<i>150</i>&nbsp;     * @param updatedValues an integer array .
+<i>151</i>&nbsp;     * @param nonEmptyCases a linked list of cases .
+<i>152</i>&nbsp;     * @return the score of merged cases .
+<i>153</i>&nbsp;     */
+<i>154</i>&nbsp;    private int mergeListCase(int[] updatedValues, LinkedList&lt;Case&gt; nonEmptyCases) {
+<b class="fc"><i>155</i>&nbsp;        if(nonEmptyCases == null){</b>
+<b class="nc"><i>156</i>&nbsp;            throw new IllegalArgumentException(&quot;The list of case to merge is null &quot;);</b>
+<i>157</i>&nbsp;        }
+<b class="fc"><i>158</i>&nbsp;        if(updatedValues == null){</b>
+<b class="nc"><i>159</i>&nbsp;            throw new IllegalArgumentException(&quot;The array of updated values is null &quot;);</b>
+<i>160</i>&nbsp;        }
+<b class="fc"><i>161</i>&nbsp;        int mergedScore = 0;</b>
+<b class="fc"><i>162</i>&nbsp;        int indexOfUpdatedValues = 0;</b>
+<b class="fc"><i>163</i>&nbsp;        while (!nonEmptyCases.isEmpty()) {</b>
+<b class="fc"><i>164</i>&nbsp;            Case current = nonEmptyCases.pollFirst();</b>
+<b class="fc"><i>165</i>&nbsp;            Case next = nonEmptyCases.peekFirst();</b>
+<b class="fc"><i>166</i>&nbsp;            if (next != null &amp;&amp; current.merge(next)) {</b>
+<b class="fc"><i>167</i>&nbsp;                updatedValues[indexOfUpdatedValues] = (current.getValue() + next.getValue());</b>
+<b class="fc"><i>168</i>&nbsp;                mergedScore = mergedScore + updatedValues[indexOfUpdatedValues];</b>
+<b class="fc"><i>169</i>&nbsp;                nonEmptyCases.pollFirst();</b>
+<i>170</i>&nbsp;            } else {
+<b class="fc"><i>171</i>&nbsp;                updatedValues[indexOfUpdatedValues] = current.getValue();</b>
+<b class="fc"><i>172</i>&nbsp;                if (next != null) {</b>
+<b class="fc"><i>173</i>&nbsp;                    updatedValues[indexOfUpdatedValues + 1] = next.getValue();</b>
+<i>174</i>&nbsp;                }
+<i>175</i>&nbsp;            }
+<b class="fc"><i>176</i>&nbsp;            indexOfUpdatedValues++;</b>
+<b class="fc"><i>177</i>&nbsp;        }</b>
+<b class="fc"><i>178</i>&nbsp;        return mergedScore;</b>
+<i>179</i>&nbsp;    }
+<i>180</i>&nbsp;
+<i>181</i>&nbsp;    /**
+<i>182</i>&nbsp;     * Initializes a linkedList of non empty cases using a case list .
+<i>183</i>&nbsp;     *
+<i>184</i>&nbsp;     * @param cases         a case list .
+<i>185</i>&nbsp;     * @param nonEmptyCases a case linkedList .
+<i>186</i>&nbsp;     */
+<i>187</i>&nbsp;    private void initListNonEmptyCase(List&lt;Case&gt; cases, LinkedList&lt;Case&gt; nonEmptyCases) {
+<b class="fc"><i>188</i>&nbsp;        if(cases == null || nonEmptyCases == null){</b>
+<b class="nc"><i>189</i>&nbsp;            throw new IllegalArgumentException(&quot;The list of case is null &quot;);</b>
+<i>190</i>&nbsp;        }
+<b class="fc"><i>191</i>&nbsp;        for (Case aCase : cases) {</b>
+<b class="fc"><i>192</i>&nbsp;            if (!aCase.isEmpty()) {</b>
+<b class="fc"><i>193</i>&nbsp;                nonEmptyCases.add(aCase);</b>
+<i>194</i>&nbsp;            }
+<b class="fc"><i>195</i>&nbsp;        }</b>
+<b class="fc"><i>196</i>&nbsp;    }</b>
+<i>197</i>&nbsp;
+<i>198</i>&nbsp;    /**
+<i>199</i>&nbsp;     * Updates the list of case with the given updated values .
+<i>200</i>&nbsp;     *
+<i>201</i>&nbsp;     * @param updatedValues an integer array
+<i>202</i>&nbsp;     * @param caseToUpdate  a case list .
+<i>203</i>&nbsp;     */
+<i>204</i>&nbsp;    private void updateList(int[] updatedValues, List&lt;Case&gt; caseToUpdate) {
+<b class="fc"><i>205</i>&nbsp;        if(caseToUpdate == null){</b>
+<b class="nc"><i>206</i>&nbsp;            throw new IllegalArgumentException(&quot;The list of case to update is null &quot;);</b>
+<i>207</i>&nbsp;        }
+<b class="fc"><i>208</i>&nbsp;        if(updatedValues == null){</b>
+<b class="nc"><i>209</i>&nbsp;            throw new IllegalArgumentException(&quot;The array of updated values is null &quot;);</b>
+<i>210</i>&nbsp;        }
+<b class="fc"><i>211</i>&nbsp;        for (int index = 0; index &lt; updatedValues.length; index++) {</b>
+<b class="fc"><i>212</i>&nbsp;            Case c = caseToUpdate.get(index);</b>
+<b class="fc"><i>213</i>&nbsp;            gameTable[c.getLine()][c.getColumn()].setValue(updatedValues[index]);</b>
+<i>214</i>&nbsp;        }
+<b class="fc"><i>215</i>&nbsp;    }</b>
+<i>216</i>&nbsp;
+<i>217</i>&nbsp;    /**
+<i>218</i>&nbsp;     * Initializes a list with cases to merge for a down move .
+<i>219</i>&nbsp;     *
+<i>220</i>&nbsp;     * @param casesToMerge a case list .
+<i>221</i>&nbsp;     * @param column       a integer .
+<i>222</i>&nbsp;     */
+<i>223</i>&nbsp;    private void initListMoveDown(List&lt;Case&gt; casesToMerge, int column) {
+<b class="fc"><i>224</i>&nbsp;        if(casesToMerge == null){</b>
+<b class="nc"><i>225</i>&nbsp;            throw new IllegalArgumentException(&quot;The list of cases to merge is null &quot;);</b>
+<i>226</i>&nbsp;        }
+<b class="fc"><i>227</i>&nbsp;        for (int line = gameTable.length - 1; line &gt;= 0; line--) {</b>
+<b class="fc"><i>228</i>&nbsp;            casesToMerge.add(gameTable[line][column]);</b>
+<i>229</i>&nbsp;        }
+<b class="fc"><i>230</i>&nbsp;    }</b>
+<i>231</i>&nbsp;
+<i>232</i>&nbsp;    /**
+<i>233</i>&nbsp;     * Initializes a list with cases to merge for a right move .
+<i>234</i>&nbsp;     *
+<i>235</i>&nbsp;     * @param casesToMerge a case list .
+<i>236</i>&nbsp;     * @param line         an integer .
+<i>237</i>&nbsp;     */
+<i>238</i>&nbsp;    private void initListMoveRight(List&lt;Case&gt; casesToMerge, int line) {
+<b class="fc"><i>239</i>&nbsp;        if(casesToMerge == null){</b>
+<b class="nc"><i>240</i>&nbsp;            throw new IllegalArgumentException(&quot;The list of cases to merge is null &quot;);</b>
+<i>241</i>&nbsp;        }
+<b class="fc"><i>242</i>&nbsp;        for (int column = gameTable[line].length - 1; column &gt;= 0; column--) {</b>
+<b class="fc"><i>243</i>&nbsp;            casesToMerge.add(gameTable[line][column]);</b>
+<i>244</i>&nbsp;        }
+<b class="fc"><i>245</i>&nbsp;    }</b>
+<i>246</i>&nbsp;
+<i>247</i>&nbsp;    /**
+<i>248</i>&nbsp;     * Initializes the board with a random non-empty case.
+<i>249</i>&nbsp;     */
+<i>250</i>&nbsp;    private void initializeBoard() {
+<b class="fc"><i>251</i>&nbsp;        for (int line = 0; line &lt; HEIGHT; line++) {</b>
+<b class="fc"><i>252</i>&nbsp;            for (int column = 0; column &lt; HEIGHT; column++) {</b>
+<b class="fc"><i>253</i>&nbsp;                this.gameTable[line][column] = new Case(line, column);</b>
+<b class="fc"><i>254</i>&nbsp;                this.history[line][column] = new Case(line, column);</b>
+<i>255</i>&nbsp;            }
+<i>256</i>&nbsp;        }
+<b class="fc"><i>257</i>&nbsp;        this.initializeRandomCase();</b>
+<b class="fc"><i>258</i>&nbsp;    }</b>
+<i>259</i>&nbsp;
+<i>260</i>&nbsp;    /**
+<i>261</i>&nbsp;     * Initializes a random empty case with the value 2 or 4 (the chance for a 2 is 90% and 10% for a 4).
+<i>262</i>&nbsp;     */
+<i>263</i>&nbsp;    void initializeRandomCase() {
+<b class="fc"><i>264</i>&nbsp;        Random random = new Random();</b>
+<b class="fc"><i>265</i>&nbsp;        List&lt;Case&gt; listEmptyCase = new LinkedList&lt;&gt;();</b>
+<b class="fc"><i>266</i>&nbsp;        for (Case[] cases : this.gameTable) {</b>
+<b class="fc"><i>267</i>&nbsp;            for (Case aCase : cases) {</b>
+<b class="fc"><i>268</i>&nbsp;                if (aCase.isEmpty()) {</b>
+<b class="fc"><i>269</i>&nbsp;                    listEmptyCase.add(aCase);</b>
+<i>270</i>&nbsp;                }
+<i>271</i>&nbsp;            }
+<i>272</i>&nbsp;        }
+<b class="fc"><i>273</i>&nbsp;        double value = random.nextDouble();</b>
+<b class="fc"><i>274</i>&nbsp;        Case randomCase = listEmptyCase.get(random.nextInt(listEmptyCase.size()));</b>
+<b class="fc"><i>275</i>&nbsp;        this.gameTable[randomCase.getLine()][randomCase.getColumn()].setValue(value &gt;= 0.9 ? 4 : 2);</b>
+<b class="fc"><i>276</i>&nbsp;    }</b>
+<i>277</i>&nbsp;
+<i>278</i>&nbsp;    /**
+<i>279</i>&nbsp;     * Checks if the game board is full with non-empty cases.
+<i>280</i>&nbsp;     *
+<i>281</i>&nbsp;     * @param gameBoard a 2D array of case.
+<i>282</i>&nbsp;     * @return true if game board is full ,false otherwise.
+<i>283</i>&nbsp;     */
+<i>284</i>&nbsp;    boolean isFull(Case[][] gameBoard) {
+<b class="fc"><i>285</i>&nbsp;        if (gameBoard == null){</b>
+<b class="nc"><i>286</i>&nbsp;            throw new IllegalArgumentException(&quot;Game board is null&quot;);</b>
+<i>287</i>&nbsp;        }
+<b class="fc"><i>288</i>&nbsp;        for (Case[] cases : gameBoard) {</b>
+<b class="fc"><i>289</i>&nbsp;            for (Case aCase : cases) {</b>
+<b class="fc"><i>290</i>&nbsp;                if (aCase.isEmpty()) {</b>
+<b class="fc"><i>291</i>&nbsp;                    return false;</b>
+<i>292</i>&nbsp;                }
+<i>293</i>&nbsp;            }
+<i>294</i>&nbsp;        }
+<b class="fc"><i>295</i>&nbsp;        return true;</b>
+<i>296</i>&nbsp;    }
+<i>297</i>&nbsp;
+<i>298</i>&nbsp;    /**
+<i>299</i>&nbsp;     * Return a copy of gale table .
+<i>300</i>&nbsp;     *
+<i>301</i>&nbsp;     * @return the game table .
+<i>302</i>&nbsp;     */
+<i>303</i>&nbsp;    Case[][] getGameTable() {
+<b class="fc"><i>304</i>&nbsp;        return new Board(this).gameTable;</b>
+<i>305</i>&nbsp;    }
+<i>306</i>&nbsp;
+<i>307</i>&nbsp;    /**
+<i>308</i>&nbsp;     * Compares the game table with his history and returns true if they are the same .
+<i>309</i>&nbsp;     *
+<i>310</i>&nbsp;     * @return true if game table is equal to his history ,false otherwise .
+<i>311</i>&nbsp;     */
+<i>312</i>&nbsp;    boolean compareBoard() {
+<b class="fc"><i>313</i>&nbsp;        for (int line = 0; line &lt; history.length; line++) {</b>
+<b class="fc"><i>314</i>&nbsp;            for (int column = 0; column &lt; history[line].length; column++) {</b>
+<b class="fc"><i>315</i>&nbsp;                if (gameTable[line][column].getValue() != history[line][column].getValue()) {</b>
+<b class="fc"><i>316</i>&nbsp;                    return false;</b>
+<i>317</i>&nbsp;                }
+<i>318</i>&nbsp;            }
+<i>319</i>&nbsp;        }
+<b class="fc"><i>320</i>&nbsp;        return true;</b>
+<i>321</i>&nbsp;    }
+<i>322</i>&nbsp;
+<i>323</i>&nbsp;    /**
+<i>324</i>&nbsp;     * Checks if the board contains a case with winner value .
+<i>325</i>&nbsp;     *
+<i>326</i>&nbsp;     * @param boardToCheck a 2D array of case .
+<i>327</i>&nbsp;     * @return true if the board contains a case with winner value .
+<i>328</i>&nbsp;     */
+<i>329</i>&nbsp;    boolean containsWinnerValue(Case[][] boardToCheck) {
+<b class="fc"><i>330</i>&nbsp;        if(boardToCheck == null){</b>
+<b class="nc"><i>331</i>&nbsp;            throw new IllegalArgumentException(&quot;Board to check  is null &quot;);</b>
+<i>332</i>&nbsp;        }
+<b class="fc"><i>333</i>&nbsp;        int row = 0;</b>
+<b class="fc"><i>334</i>&nbsp;        int column = 0;</b>
+<b class="fc"><i>335</i>&nbsp;        while (row &lt; boardToCheck.length) {</b>
+<b class="fc"><i>336</i>&nbsp;            while (column &lt; boardToCheck[row].length) {</b>
+<b class="fc"><i>337</i>&nbsp;                if (boardToCheck[row][column].getValue() == WINNING_CASE_VALUE) {</b>
+<b class="fc"><i>338</i>&nbsp;                    return true;</b>
+<i>339</i>&nbsp;                }
+<b class="fc"><i>340</i>&nbsp;                column++;</b>
+<i>341</i>&nbsp;            }
+<b class="fc"><i>342</i>&nbsp;            column = 0;</b>
+<b class="fc"><i>343</i>&nbsp;            row++;</b>
+<i>344</i>&nbsp;        }
+<b class="fc"><i>345</i>&nbsp;        return false;</b>
+<i>346</i>&nbsp;    }
+<i>347</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-01-14 13:27</div>
+</div>
+</body>
+</html>

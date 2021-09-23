@@ -1,0 +1,119 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: State</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">model</a> ]
+</div>
+
+<h1>Coverage Summary for Class: State (model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">State</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90%
+  </span>
+  <span class="absValue">
+    (9/ 10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package model;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;/**
+<i>4</i>&nbsp; * This enum represents the states of game .
+<i>5</i>&nbsp; */
+<b class="fc"><i>6</i>&nbsp;public enum State {</b>
+<i>7</i>&nbsp;
+<b class="fc"><i>8</i>&nbsp;    PLAYING(&quot;&quot;),</b>
+<i>9</i>&nbsp;
+<b class="fc"><i>10</i>&nbsp;    LOST(&quot;Partie perdu&quot;),</b>
+<i>11</i>&nbsp;
+<b class="fc"><i>12</i>&nbsp;    WON(&quot;Partie gagné&quot;),</b>
+<i>13</i>&nbsp;
+<b class="fc"><i>14</i>&nbsp;    WRONGMOVE(&quot;Mouvement impossible&quot;),</b>
+<i>15</i>&nbsp;
+<b class="fc"><i>16</i>&nbsp;    RESTART(&quot;Partie recommencer&quot;);</b>
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    private final String value;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    /**
+<i>21</i>&nbsp;     * Constructs the state .
+<i>22</i>&nbsp;     * @param message a string .
+<i>23</i>&nbsp;     */
+<b class="fc"><i>24</i>&nbsp;    State(String message) {</b>
+<b class="fc"><i>25</i>&nbsp;        this.value = message;</b>
+<b class="fc"><i>26</i>&nbsp;    }</b>
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    /**
+<i>29</i>&nbsp;     * Returns the message of game state .
+<i>30</i>&nbsp;     * @return a string .
+<i>31</i>&nbsp;     */
+<i>32</i>&nbsp;    @Override
+<i>33</i>&nbsp;    public String toString() {
+<b class="nc"><i>34</i>&nbsp;        return value;</b>
+<i>35</i>&nbsp;    }
+<i>36</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-01-14 13:27</div>
+</div>
+</body>
+</html>

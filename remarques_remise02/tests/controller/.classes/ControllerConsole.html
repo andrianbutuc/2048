@@ -1,0 +1,134 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ControllerConsole</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">controller</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ControllerConsole (controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ControllerConsole</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 22)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package controller;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import model.Game;
+<i>4</i>&nbsp;import model.Game2048;
+<i>5</i>&nbsp;import view.Console.ViewConsole;
+<i>6</i>&nbsp;import view.Console.View2048;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;/**
+<i>9</i>&nbsp; * This class represents the controller of game 2048.
+<i>10</i>&nbsp; */
+<i>11</i>&nbsp;public class ControllerConsole {
+<i>12</i>&nbsp;    private final ViewConsole view;
+<i>13</i>&nbsp;    private final Game game;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    /**
+<i>16</i>&nbsp;     * Constructs a controller of game 2048
+<i>17</i>&nbsp;     */
+<b class="nc"><i>18</i>&nbsp;    public ControllerConsole() {</b>
+<b class="nc"><i>19</i>&nbsp;        this.view = new View2048();</b>
+<b class="nc"><i>20</i>&nbsp;        this.game = new Game2048();</b>
+<b class="nc"><i>21</i>&nbsp;    }</b>
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    /**
+<i>24</i>&nbsp;     * Plays the game 2048 .
+<i>25</i>&nbsp;     */
+<i>26</i>&nbsp;    public void play() {
+<b class="nc"><i>27</i>&nbsp;        boolean play = true;</b>
+<b class="nc"><i>28</i>&nbsp;        while (play) {</b>
+<b class="nc"><i>29</i>&nbsp;            this.view.printMessage(&quot;Le game board 2048&quot;);</b>
+<b class="nc"><i>30</i>&nbsp;            this.view.printBoard(this.game.getBoard());</b>
+<b class="nc"><i>31</i>&nbsp;            this.view.printScore(this.game.getScore());</b>
+<b class="nc"><i>32</i>&nbsp;            this.view.printMenu();</b>
+<i>33</i>&nbsp;            try {
+<b class="nc"><i>34</i>&nbsp;                this.game.move(this.view.askDirection());</b>
+<b class="nc"><i>35</i>&nbsp;            } catch (Exception e) {</b>
+<b class="nc"><i>36</i>&nbsp;                this.view.printMessage(e.getMessage());</b>
+<b class="nc"><i>37</i>&nbsp;            }</b>
+<b class="nc"><i>38</i>&nbsp;            if (!this.game.boardIsFull() &amp;&amp; !this.game.compareBoard()) {</b>
+<b class="nc"><i>39</i>&nbsp;                this.game.initializeRandomCase();</b>
+<i>40</i>&nbsp;            }
+<b class="nc"><i>41</i>&nbsp;            if (this.game.isWon() || this.game.isLost()) {</b>
+<b class="nc"><i>42</i>&nbsp;                play = false;</b>
+<i>43</i>&nbsp;            }
+<i>44</i>&nbsp;        }
+<b class="nc"><i>45</i>&nbsp;        if (this.game.isWon()) {</b>
+<b class="nc"><i>46</i>&nbsp;            this.view.printMessage(&quot;Le joueur a gagné &quot;);</b>
+<i>47</i>&nbsp;        } else {
+<b class="nc"><i>48</i>&nbsp;            this.view.printMessage(&quot;Le joueur a perdu &quot;);</b>
+<i>49</i>&nbsp;        }
+<b class="nc"><i>50</i>&nbsp;    }</b>
+<i>51</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-01-14 13:27</div>
+</div>
+</body>
+</html>

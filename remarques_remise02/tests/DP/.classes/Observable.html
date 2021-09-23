@@ -1,0 +1,86 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Observable</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">DP</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Observable (DP)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">Observable</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package DP;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;/**
+<i>4</i>&nbsp; * The interface Observable .
+<i>5</i>&nbsp; */
+<i>6</i>&nbsp;public interface Observable {
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;    /**
+<i>9</i>&nbsp;     * Adds an observer to the set of the observers for this object ,provided that
+<i>10</i>&nbsp;     * if is not the same as some observer already in the set .The order in which
+<i>11</i>&nbsp;     * notifications will be delivered to multiple observers is not specified .
+<i>12</i>&nbsp;     * See the class comment .
+<i>13</i>&nbsp;     *
+<i>14</i>&nbsp;     * @param observer an observer to be added .
+<i>15</i>&nbsp;     * @throws NullPointerException if the parameter is null .
+<i>16</i>&nbsp;     */
+<i>17</i>&nbsp;    void addObserver(Observer observer);
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    /**
+<i>20</i>&nbsp;     * Notify all of its observers .
+<i>21</i>&nbsp;     * &lt;p&gt;
+<i>22</i>&nbsp;     * Each observer has its {@code update} method called with two arguments :
+<i>23</i>&nbsp;     * this observable object and {@code null} .In other words, this method is
+<i>24</i>&nbsp;     * equivalent to :
+<i>25</i>&nbsp;     * &lt;blockquote&gt;{@code
+<i>26</i>&nbsp;     * notifyObservers(null)}*&lt;/blockquote&gt;
+<i>27</i>&nbsp;     */
+<i>28</i>&nbsp;    void notifyObservers();
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    /**
+<i>31</i>&nbsp;     * Notify all of its observers .
+<i>32</i>&nbsp;     * &lt;p&gt;
+<i>33</i>&nbsp;     * Each observer has its {@code update} method called with two arguments :
+<i>34</i>&nbsp;     * this observable object and the {@code arg} argument .
+<i>35</i>&nbsp;     *
+<i>36</i>&nbsp;     * @param arg any object .
+<i>37</i>&nbsp;     */
+<i>38</i>&nbsp;    void notifyObservers(Object arg);
+<i>39</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-01-14 13:27</div>
+</div>
+</body>
+</html>

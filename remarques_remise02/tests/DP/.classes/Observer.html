@@ -1,0 +1,66 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Observer</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">DP</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Observer (DP)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">Observer</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package DP;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;/**
+<i>4</i>&nbsp; * A class can implement the {@code Observer} interface when it wants to informed of changes
+<i>5</i>&nbsp; * in observable objects .
+<i>6</i>&nbsp; *
+<i>7</i>&nbsp; * @author jlc .
+<i>8</i>&nbsp; */
+<i>9</i>&nbsp;public interface Observer {
+<i>10</i>&nbsp;    /**
+<i>11</i>&nbsp;     * This method is called whenever the observed object is changed .An application calls an
+<i>12</i>&nbsp;     * {@code Observable} object&#39;s {@code notifyObservers} method to have all the objects observers
+<i>13</i>&nbsp;     * notified of the change .
+<i>14</i>&nbsp;     *
+<i>15</i>&nbsp;     * @param observable the observable object .
+<i>16</i>&nbsp;     * @param arg an argument passed to the {@code notifyObservers} method .
+<i>17</i>&nbsp;     */
+<i>18</i>&nbsp;    void update(Observable observable, Object arg);
+<i>19</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-01-14 13:27</div>
+</div>
+</body>
+</html>

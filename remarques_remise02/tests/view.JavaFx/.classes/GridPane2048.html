@@ -1,0 +1,140 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: GridPane2048</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">view.JavaFx</a> ]
+</div>
+
+<h1>Coverage Summary for Class: GridPane2048 (view.JavaFx)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GridPane2048</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 17)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package view.JavaFx;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import javafx.scene.layout.GridPane;
+<i>4</i>&nbsp;import model.Case;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;/**
+<i>7</i>&nbsp; * The board representation of game 2048 .
+<i>8</i>&nbsp; */
+<i>9</i>&nbsp;class GridPane2048 extends GridPane {
+<i>10</i>&nbsp;    private final Case2048[][] cases;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    /**
+<i>13</i>&nbsp;     * Constructs the board using cases .
+<i>14</i>&nbsp;     *
+<i>15</i>&nbsp;     * @param cases a 2D array of case .
+<i>16</i>&nbsp;     */
+<b class="nc"><i>17</i>&nbsp;    GridPane2048(Case[][] cases) {</b>
+<b class="nc"><i>18</i>&nbsp;        this.cases = new Case2048[cases.length][cases.length];</b>
+<b class="nc"><i>19</i>&nbsp;        initialize(cases);</b>
+<b class="nc"><i>20</i>&nbsp;        this.setVgap(5);</b>
+<b class="nc"><i>21</i>&nbsp;        this.setHgap(5);</b>
+<b class="nc"><i>22</i>&nbsp;        this.setStyle(&quot;-fx-padding: 5;&quot; +</b>
+<i>23</i>&nbsp;                &quot;-fx-border-style: solid inside;&quot; +
+<i>24</i>&nbsp;                &quot;-fx-border-width: 2;&quot; +
+<i>25</i>&nbsp;                &quot;-fx-border-insets: 5;&quot; +
+<i>26</i>&nbsp;                &quot;-fx-border-radius: 5;&quot; +
+<i>27</i>&nbsp;                &quot;-fx-border-color: #292F33;&quot; +
+<i>28</i>&nbsp;                &quot;-fx-background-color: #CCD6DD;&quot;);
+<b class="nc"><i>29</i>&nbsp;    }</b>
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    /**
+<i>32</i>&nbsp;     * Initializes the cases of game .
+<i>33</i>&nbsp;     * @param cases a 2D array of case .
+<i>34</i>&nbsp;     */
+<i>35</i>&nbsp;    private void initialize(Case[][] cases) {
+<b class="nc"><i>36</i>&nbsp;        for (int row = 0; row &lt; cases.length; row++) {</b>
+<b class="nc"><i>37</i>&nbsp;            for (int column = 0; column &lt; cases.length; column++) {</b>
+<b class="nc"><i>38</i>&nbsp;                this.cases[row][column] = new Case2048(String.valueOf(cases[row][column].getValue()));</b>
+<b class="nc"><i>39</i>&nbsp;                this.add(this.cases[row][column], row, column);</b>
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;            }
+<i>42</i>&nbsp;        }
+<b class="nc"><i>43</i>&nbsp;    }</b>
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    /**
+<i>46</i>&nbsp;     * Updates all game cases .
+<i>47</i>&nbsp;     * @param cases a 2D array of case .
+<i>48</i>&nbsp;     */
+<i>49</i>&nbsp;    void updateAll(Case[][] cases) {
+<b class="nc"><i>50</i>&nbsp;        for (int row = 0; row &lt; cases.length; row++) {</b>
+<b class="nc"><i>51</i>&nbsp;            for (int column = 0; column &lt; cases[row].length; column++) {</b>
+<b class="nc"><i>52</i>&nbsp;                String stringValue = String.valueOf(cases[row][column].getValue());</b>
+<b class="nc"><i>53</i>&nbsp;                this.cases[row][column].updateCase(stringValue);</b>
+<i>54</i>&nbsp;            }
+<i>55</i>&nbsp;        }
+<b class="nc"><i>56</i>&nbsp;    }</b>
+<i>57</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-01-14 13:27</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: GridControl</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">view.JavaFx</a> ]
+</div>
+
+<h1>Coverage Summary for Class: GridControl (view.JavaFx)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GridControl</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package view.JavaFx;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import DP.Observable;
+<i>4</i>&nbsp;import DP.Observer;
+<i>5</i>&nbsp;import javafx.scene.control.Button;
+<i>6</i>&nbsp;import javafx.scene.control.Label;
+<i>7</i>&nbsp;import javafx.scene.layout.ColumnConstraints;
+<i>8</i>&nbsp;import javafx.scene.layout.GridPane;
+<i>9</i>&nbsp;import javafx.scene.layout.Priority;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;/**
+<i>12</i>&nbsp; * The control part of view .
+<i>13</i>&nbsp; */
+<i>14</i>&nbsp;public class GridControl extends GridPane implements Observer {
+<i>15</i>&nbsp;    private final Button restart;
+<i>16</i>&nbsp;    private final Label score;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    /**
+<i>19</i>&nbsp;     * Constructs the grid control .
+<i>20</i>&nbsp;     */
+<b class="nc"><i>21</i>&nbsp;    GridControl() {</b>
+<b class="nc"><i>22</i>&nbsp;        this.restart = new Button(&quot;Restart&quot;);</b>
+<b class="nc"><i>23</i>&nbsp;        this.score = new Label(&quot;Score : 0 &quot;);</b>
+<b class="nc"><i>24</i>&nbsp;        this.setStyle(&quot;-fx-padding: 5;&quot; +</b>
+<i>25</i>&nbsp;                &quot;-fx-border-style: solid inside;&quot; +
+<i>26</i>&nbsp;                &quot;-fx-border-width: 2;&quot; +
+<i>27</i>&nbsp;                &quot;-fx-border-insets: 5;&quot; +
+<i>28</i>&nbsp;                &quot;-fx-border-radius: 5;&quot; +
+<i>29</i>&nbsp;                &quot;-fx-border-color: #292F33;&quot; +
+<i>30</i>&nbsp;                &quot;-fx-background-color: #CCD6DD;&quot;+&quot;-fx-padding : 10&quot;);
+<b class="nc"><i>31</i>&nbsp;        this.add(restart,0 ,0);</b>
+<b class="nc"><i>32</i>&nbsp;        this.add(score,1,0);</b>
+<b class="nc"><i>33</i>&nbsp;        ColumnConstraints leftCol = new ColumnConstraints();</b>
+<b class="nc"><i>34</i>&nbsp;        leftCol.setHgrow(Priority.ALWAYS);</b>
+<b class="nc"><i>35</i>&nbsp;        this.getColumnConstraints().addAll(leftCol, new ColumnConstraints(), new ColumnConstraints());</b>
+<b class="nc"><i>36</i>&nbsp;    }</b>
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;    /**
+<i>39</i>&nbsp;     * Returns the button restart .
+<i>40</i>&nbsp;     * @return a button .
+<i>41</i>&nbsp;     */
+<i>42</i>&nbsp;    Button getRestart() {
+<b class="nc"><i>43</i>&nbsp;        return restart;</b>
+<i>44</i>&nbsp;    }
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    @Override
+<i>47</i>&nbsp;    public void update(Observable observable, Object arg) {
+<b class="nc"><i>48</i>&nbsp;        int newScore = (int) arg;</b>
+<b class="nc"><i>49</i>&nbsp;        this.score.setText(&quot;Score : &quot; + newScore);</b>
+<b class="nc"><i>50</i>&nbsp;    }</b>
+<i>51</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-01-14 13:27</div>
+</div>
+</body>
+</html>

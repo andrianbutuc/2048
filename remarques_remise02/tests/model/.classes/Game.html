@@ -1,0 +1,114 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Game</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">model</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Game (model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">Game</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package model;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import DP.Observable;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;/**
+<i>6</i>&nbsp; * This interface provide the methods to implement the game 2048 .
+<i>7</i>&nbsp; */
+<i>8</i>&nbsp;public interface Game extends Observable {
+<i>9</i>&nbsp;    /**
+<i>10</i>&nbsp;     * Return a copy of gale table .
+<i>11</i>&nbsp;     *
+<i>12</i>&nbsp;     * @return the game table .
+<i>13</i>&nbsp;     */
+<i>14</i>&nbsp;    Case[][] getBoard();
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    /**
+<i>17</i>&nbsp;     * Returns the score of game .
+<i>18</i>&nbsp;     *
+<i>19</i>&nbsp;     * @return the score of game .
+<i>20</i>&nbsp;     */
+<i>21</i>&nbsp;    int getScore();
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    /**
+<i>24</i>&nbsp;     * Initializes a random empty case with the value 2 or 4 (the chance for a 2 is 90% and 10% for a 4).
+<i>25</i>&nbsp;     */
+<i>26</i>&nbsp;    void initializeRandomCase();
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    /**
+<i>29</i>&nbsp;     * Moves the cases in the indicated direction and update the score .
+<i>30</i>&nbsp;     *
+<i>31</i>&nbsp;     * @param direction a direction .
+<i>32</i>&nbsp;     */
+<i>33</i>&nbsp;    void move(Direction direction);
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    /**
+<i>36</i>&nbsp;     * Checks if the game board is full with non-empty cases.
+<i>37</i>&nbsp;     *
+<i>38</i>&nbsp;     * @return true if game board is full ,false otherwise.
+<i>39</i>&nbsp;     */
+<i>40</i>&nbsp;    boolean boardIsFull();
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;    /**
+<i>43</i>&nbsp;     * Checks if the game is won .
+<i>44</i>&nbsp;     *
+<i>45</i>&nbsp;     * @return true if the game is won ,false otherwise.
+<i>46</i>&nbsp;     */
+<i>47</i>&nbsp;    boolean isWon();
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;    /**
+<i>50</i>&nbsp;     * Checks if the game is lost .
+<i>51</i>&nbsp;     *
+<i>52</i>&nbsp;     * @return true if the game is lost ,false otherwise.
+<i>53</i>&nbsp;     */
+<i>54</i>&nbsp;    boolean isLost();
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    /**
+<i>57</i>&nbsp;     * Compares the game table with his history and returns true if they are the same .
+<i>58</i>&nbsp;     *
+<i>59</i>&nbsp;     * @return true if game table is equal to his history ,false otherwise .
+<i>60</i>&nbsp;     */
+<i>61</i>&nbsp;    boolean compareBoard();
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;    /**
+<i>64</i>&nbsp;     * Restarts the game .
+<i>65</i>&nbsp;     */
+<i>66</i>&nbsp;    void restart();
+<i>67</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-01-14 13:27</div>
+</div>
+</body>
+</html>
